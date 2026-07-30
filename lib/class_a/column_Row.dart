@@ -8,51 +8,58 @@ class CloumnRow extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
+
+          //block 1
           Row(
             children: [
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(60)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      // borderRadius: BorderRadius.circular(60)
+                  ),
+                  child: Text(""),
                 ),
-                child: Text(""),
               ),
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(60)
+
+              //
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(60)
+                      ),
+                      child: Text(""),
+                    ),
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(60)
+                      ),
+                      child: Text(""),
+                    ),
+                  ],
                 ),
-                child: Text(""),
               ),
+
             ],
           ),
 
-          Row(
-            children: [
-              Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(60)
-                ),
-                child: Text(""),
-              ),
-            ],
-          ),
-          Container(
-            height: 100,
-            width: 100,
-            decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(60)
-            ),
-            child: Text(""),
-          ),
+          //block 2
+
+
+
+
         ],
       ),
 
