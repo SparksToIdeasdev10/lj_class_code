@@ -95,6 +95,11 @@ class TextFieldExample extends StatelessWidget {
               ),
             ),
           ),
+
+          InkWell(
+            onTap: (){},
+              child: Text("Sign up"),
+          )
         ],
       ),
     );
