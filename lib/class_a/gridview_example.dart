@@ -18,12 +18,17 @@ List color = [Colors.blue,
           ),
           itemCount: color.length,
           itemBuilder: (context,index){
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 100,
-                width: 100,
-                color: color[index],
+            return InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  color: color[index],
+                ),
               ),
             );
           }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lj/class_a/bottom_nav_example.dart';
+import 'package:lj/class_a/splash_screen.dart';
 import 'class_a/bottom_task.dart';
 import 'class_a/gridview_example.dart';
 import 'class_a/tab_bar_example.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-        home: StackExample(),
+        home: SplashScreen(),
     );
   }
 }
