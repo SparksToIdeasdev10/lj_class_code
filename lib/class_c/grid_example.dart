@@ -11,7 +11,9 @@ class GridExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        title: Text("Grid"),
+      ),
       body: Column(
         children: [
           Padding(
