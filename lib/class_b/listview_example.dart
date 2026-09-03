@@ -15,21 +15,30 @@ class ListViewExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+      ),
       body: ListView.builder(
         // scrollDirection: Axis.horizontal,
         itemCount: color.length,
         itemBuilder: (context,index){
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                height: 100,
-                width: 100,
-                color: color[index],
-                // index == 1
-                //     ?Colors.blue
-                //     :Colors.red,
-                child: Text("$index"),
+          return InkWell(
+            onTap: (){
+              Navigator.pop(context);
+              // Navigator.pop(context);
+            },
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  color: color[index],
+                  // index == 1
+                  //     ?Colors.blue
+                  //     :Colors.red,
+                  child: Text("$index"),
+                ),
               ),
             ),
           );

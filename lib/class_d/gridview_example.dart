@@ -6,19 +6,27 @@ class GridViewExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("GridView"),
+      ),
       body: Column(
         children: [
-          Card(
-            color: Colors.blue,
-            elevation: 6.0,
-            shadowColor: Colors.yellow,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Text("XYZ"),
-                  Text("XYZ"),
-                ],
+          InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Card(
+              color: Colors.blue,
+              elevation: 6.0,
+              shadowColor: Colors.yellow,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text("XYZ"),
+                    Text("XYZ"),
+                  ],
+                ),
               ),
             ),
           ),

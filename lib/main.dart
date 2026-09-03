@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:lj/class_a/splash_screen.dart';
+import 'package:lj/class_b/splash_screen.dart';
+import 'package:lj/class_b/buttons.dart';
 import 'package:lj/class_d/bottom_nav_task.dart';
 import 'class_a/snackbar_example.dart';
 import 'class_b/bottom_task.dart';
 import 'class_c/splash_screen.dart';
+import 'class_d/buttons_example.dart';
 import 'class_d/gridview_example.dart';
 // import 'class_c/snackbar_navigation.dart';
-import 'class_a/tab_bar_example.dart';
+import 'class_b/tab_bar_example.dart';
 import 'class_b/bottom_nav_example.dart';
 import 'class_c/buttonss.dart';
 import 'class_c/grid_example.dart';
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-        home: BottomNavTask(),
+        home: Buttons(),
       // #1f4b3e
       //#c18f2c
     );
