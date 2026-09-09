@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lj1/class_e/bottom_example.dart';
 import 'package:lj1/class_e/gridview_example.dart';
 import 'package:lj1/class_e/login_screen.dart';
+import 'package:lj1/class_e/tab_bar_example.dart';
 import 'class_b/admin_dashboard.dart';
 import 'class_c/bottom_task.dart';
+import 'class_e/buttons.dart';
+import 'class_d/splash_screen.dart';
 import 'class_e/admin_screen.dart';
 import 'class_e/stack_example.dart';
 
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: StackExample()
+      home: Buttons()
     );
   }
 }
