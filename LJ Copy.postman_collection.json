@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "f1172319-70e9-4167-9466-816b6c07b67f",
+		"name": "LJ Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42335536"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "jaydeep",
+							"type": "text"
+						},
+						{
+							"key": "SurName",
+							"value": "rana",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "prasadbhaiiii@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.anniecabs.com/LJ/index.php/api/register",
+					"protocol": "https",
+					"host": [
+						"www",
+						"anniecabs",
+						"com"
+					],
+					"path": [
+						"LJ",
+						"index.php",
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tree Plant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://www.anniecabs.com/LJ/index.php/api/get_tree_plant",
+					"protocol": "https",
+					"host": [
+						"www",
+						"anniecabs",
+						"com"
+					],
+					"path": [
+						"LJ",
+						"index.php",
+						"api",
+						"get_tree_plant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://www.sparkstoideas.com/LJ/api/get_tree_plant",
+					"protocol": "https",
+					"host": [
+						"www",
+						"sparkstoideas",
+						"com"
+					],
+					"path": [
+						"LJ",
+						"api",
+						"get_tree_plant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Email",
+							"value": "sparksjaydeep303@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://www.anniecabs.com/LJ/index.php/api/login",
+					"protocol": "https",
+					"host": [
+						"www",
+						"anniecabs",
+						"com"
+					],
+					"path": [
+						"LJ",
+						"index.php",
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=b9c7382436b811f3b66d2091f54e9f5a",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=b9c7382436b811f3b66d2091f54e9f5a",
+					"protocol": "https",
+					"host": [
+						"gnews",
+						"io"
+					],
+					"path": [
+						"api",
+						"v4",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "example"
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						},
+						{
+							"key": "country",
+							"value": "us"
+						},
+						{
+							"key": "max",
+							"value": "10"
+						},
+						{
+							"key": "apikey",
+							"value": "b9c7382436b811f3b66d2091f54e9f5a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=f9028e0e494f8210210ecd2e6513c121",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=f9028e0e494f8210210ecd2e6513c121",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "44.34"
+						},
+						{
+							"key": "lon",
+							"value": "10.99"
+						},
+						{
+							"key": "appid",
+							"value": "f9028e0e494f8210210ecd2e6513c121"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
