@@ -1,27 +1,36 @@
 import 'dart:convert';
 import 'dart:html';
-import 'package:dio/dio.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:lj1/class_a/login/login_model.dart';
-import 'package:lj1/class_d/tree_plant/tree_model.dart';
 
 class ApiServices{
-  final Dio dio = Dio();
 
-  Future<login> Login(String email,String password) async{
+  Future<login> Login() async{
+    
     try{
+
+      // final formdata = FormData();
+      
       final respo = await http.post(
           Uri.parse("https://www.anniecabs.com/LJ/index.php/api/login"),
-          body: {
-            "Email":email,
-            "Password":password,
-          }
+        body: {
+
+        }
+
+        // use this if you want to pass Raw Data
+        // {
+        //     "Email":"",
+        //     "Password":"",
+        // }
       );
 
       if(respo.statusCode == 200 || respo.statusCode == 201){
 
         final jsonData = jsonDecode(respo.body);
+
         final userValue = login.fromJson(jsonData);
+
         // final user_value = login.fromJson(respo.body as Map<String, dynamic>);
         return userValue;
       }else{
@@ -32,23 +41,7 @@ class ApiServices{
       print(e);
       throw Exception("$e");
     }
-
-  }
-  
-  Future<tree> Tree() async{
-    try{
-      final respo = await dio.get(
-          "https://www.anniecabs.com/LJ/index.php/api/get_tree_plant",);
-      if(respo.statusCode == 200){
-        final user_value = tree.fromJson(respo.data);
-        return user_value;
-      }else{
-        throw Exception("Error!!!!");
-      }
-    }catch(e){
-      print(e);
-      throw Exception("$e");
-    }
+    
   }
 
 }
