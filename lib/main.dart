@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lj1/class_d/tree_plant/tree_screen.dart';
+import 'package:get/get.dart';
+import 'package:lj1/class_a/tree_plant/tree_screen.dart';
+import 'package:lj1/class_d/news/news_screen.dart';
 import 'package:lj1/class_e/bottom_example.dart';
 import 'package:lj1/class_e/gridview_example.dart';
 import 'package:lj1/class_e/login_screen.dart';
@@ -22,14 +24,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TreeScreen()
+      home: NewsScreen()
     );
   }
 }
