@@ -38,6 +38,9 @@ dependencies:
   http:
   dio:
   get:
+  firebase_core:
+  firebase_messaging:
+  firebase_auth:
 
 dev_dependencies:
   flutter_test:

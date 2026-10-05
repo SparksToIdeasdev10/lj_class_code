@@ -1,0 +1,25 @@
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:lj1/class_d/api_services/api_services.dart';
+import 'package:lj1/class_b/gridview_example.dart';
+
+class LoginController extends GetxController{
+
+  TextEditingController name = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  Future<void> LoginCont()async{
+
+    ApiServices api = ApiServices();
+
+    final respo = await ApiServices().Login(name.text,password.text);
+
+    if(respo.responseCode.toString() == "1"){
+      Get.snackbar("Success", respo.message.toString());
+
+      Get.to(GridViewExample());
+    }else{
+      Get.snackbar("Error!!", respo.message.toString());
+    }
+  }
+}

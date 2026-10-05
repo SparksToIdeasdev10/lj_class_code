@@ -4,13 +4,11 @@ import 'package:lj1/class_b/api_services/api_services.dart';
 import 'package:lj1/class_b/gridview_example.dart';
 
 class LoginController extends GetxController{
-
+  ApiServices api = ApiServices();
   TextEditingController name = TextEditingController();
   TextEditingController password = TextEditingController();
 
   Future<void> LoginCont()async{
-
-    ApiServices api = ApiServices();
 
     final respo = await ApiServices().Login();
 
