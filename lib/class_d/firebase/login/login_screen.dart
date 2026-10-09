@@ -13,13 +13,15 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthController authController = Get.put(AuthController());
 
   void login() {
-    if (!authController.formKey.currentState!.validate()) {
+    if (authController.isLoading.value) return;
+
+    if (!(authController.formKey.currentState?.validate() ?? false)) {
       return;
     }
 
     authController.login(
-      authController.emailController.text,
-      authController.passwordController.text,
+      authController.email.text,
+      authController.password.text,
     );
   }
 
@@ -30,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 400),
+            constraints: const BoxConstraints(maxWidth: 400),
             child: Form(
               key: authController.formKey,
               child: Column(
@@ -57,15 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     'Login to your account',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),
+                    style: TextStyle(color: Colors.grey),
                   ),
 
                   SizedBox(height: 40),
 
                   TextFormField(
-                    controller: authController.emailController,
+                    controller: authController.email,
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'Email',
@@ -87,38 +87,41 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   SizedBox(height: 16),
 
-                  TextFormField(
-                    controller: authController.passwordController,
-                    obscureText: authController.obscurePassword,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      border: const OutlineInputBorder(),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          authController.obscurePassword
-                              ? Icons.visibility
-                              : Icons.visibility_off,
+                   TextFormField(
+                      controller: authController.password,
+                      obscureText:
+                      authController.obscurePassword,
+                      autofillHints: const [AutofillHints.password],
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        prefixIcon:
+                        const Icon(Icons.lock_outline),
+                        border: const OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            authController.obscurePassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              authController.obscurePassword = !authController.obscurePassword;
+                            });
+                          },
                         ),
-                        onPressed: () {
-                          setState(() {
-                            authController.obscurePassword = !authController.obscurePassword;
-                          });
-                        },
                       ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+
+                        if (value.length < 6) {
+                          return 'Password must be at least 6 characters';
+                        }
+
+                        return null;
+                      },
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
-                      }
-
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-
-                      return null;
-                    },
-                  ),
 
                   SizedBox(height: 24),
 
@@ -126,19 +129,74 @@ class _LoginScreenState extends State<LoginScreen> {
                    () => SizedBox(
                       height: 50,
                       child: ElevatedButton(
-                        onPressed:
-                        authController.isLoading.value ? null : login,
+                        onPressed: authController.isLoading.value
+                            ? null
+                            : login,
                         child: authController.isLoading.value
-                            ? const SizedBox(
-                             height: 24,
-                             width: 24,
-                              child: CircularProgressIndicator(
-                             strokeWidth: 2,
-                          ),
-                        )
+                            ? Center(child: CircularProgressIndicator())
                             : const Text(
                           'LOGIN',
                           style: TextStyle(fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: 20),
+
+                  Row(
+                    children: [
+                      Expanded(child: Divider()),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 12,
+                        ),
+                        child: Text(
+                          'OR',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      ),
+                      Expanded(child: Divider()),
+                    ],
+                  ),
+
+                  SizedBox(height: 20),
+
+                  Obx(
+                   () => SizedBox(
+                      height: 50,
+                      child: OutlinedButton(
+                        onPressed: authController.isLoading.value
+                            ? null
+                            : authController.signInWithGoogle,
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.black87,
+                          side: const BorderSide(
+                            color: Colors.grey,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.network(
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhtVJyyfMJCQN7M7-KE11wX1HjNEecL6ducDAlLKMkhQ&s=10',
+                              height: 22,
+                              width: 22,
+                            ),
+
+                            SizedBox(width: 12),
+
+                            Text(
+                              'Continue with Google',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

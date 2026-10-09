@@ -40,6 +40,7 @@ dependencies:
   get:
   firebase_core:
   firebase_messaging:
+  google_sign_in:
   firebase_auth:
 
 dev_dependencies:

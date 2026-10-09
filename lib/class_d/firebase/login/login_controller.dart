@@ -1,25 +1,25 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
-  final isLoading = false.obs;
-
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
-
+  final RxBool isLoading = false.obs;
   bool obscurePassword = true;
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   Future<void> login(String email, String password) async {
     try {
       isLoading.value = true;
-      await _auth.signInWithEmailAndPassword(
-          email: email.trim(),
-          password: password.trim()
+      await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
       );
 
       Get.snackbar(
@@ -46,6 +46,9 @@ class AuthController extends GetxController {
         case 'user-disabled':
           message = 'This account has been disabled.';
           break;
+        case 'too-many-requests':
+          message = 'Too many attempts. Please try again later.';
+          break;
         default:
           message = e.message ?? 'Login failed.';
       }
@@ -66,7 +69,55 @@ class AuthController extends GetxController {
     }
   }
 
+  Future<void> signInWithGoogle() async {
+    try {
+      isLoading.value = true;
+
+      final GoogleAuthProvider provider = GoogleAuthProvider();
+
+      if (kIsWeb) {
+        await auth.signInWithPopup(provider);
+      } else {
+        final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+        if (googleUser == null) return;
+
+        final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+
+        await auth.signInWithCredential(credential);
+      }
+      Get.snackbar(
+        'Success',
+        'Google sign-in successful',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      Get.snackbar(
+        'Google Sign-In Failed',
+        e.message ?? 'Authentication failed.',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      print(e);
+      Get.snackbar(
+        'Error',
+        'Unable to sign in with Google.',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   Future<void> logout() async {
-    await _auth.signOut();
+    await auth.signOut();
+    await googleSignIn.signOut();
   }
 }
