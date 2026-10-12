@@ -1,11 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lj/class_a/apply_loan.dart';
+import 'package:lj/class_a/drawer_example.dart';
+import 'package:lj/class_a/utils/custom_button.dart';
+import 'package:lj/class_b/apply_loan/apply_loan_screen.dart';
 import 'package:lj/class_b/splash_screen.dart';
 import 'package:lj/class_b/buttons.dart';
 import 'package:lj/class_d/bottom_nav_task.dart';
 import 'class_a/snackbar_example.dart';
 import 'class_b/bottom_task.dart';
+import 'class_c/firebase/login_screen.dart';
 import 'class_c/splash_screen.dart';
 import 'class_d/buttons_example.dart';
+import 'class_d/firebase/login_screen.dart';
 import 'class_d/gridview_example.dart';
 // import 'class_c/snackbar_navigation.dart';
 import 'class_b/tab_bar_example.dart';
@@ -19,7 +27,23 @@ import 'class_d/stack_example.dart';
 import 'class_d/textfield_example.dart';
 
 
-void main() {
+// void main() {
+//   runApp(const MyApp());
+// }
+
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+        apiKey: "AIzaSyASSEqyEmB29fxfnGOQRiwzgCSERpalUEw",
+        appId: "1:746788243478:web:ad0e3dc25aacb797dd4d37",
+        messagingSenderId: "746788243478",
+        projectId: "auth-d2294"
+    )
+  );
+
   runApp(const MyApp());
 }
 
@@ -29,15 +53,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-        home: Buttons(),
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(
+      //       seedColor: Colors.deepPurple),
+      //   useMaterial3: true,
+      // ),
+        home: LoginScreen(),
       // #1f4b3e
       //#c18f2c
     );

@@ -37,7 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio:
   http:
-  get:
+  get: ^4.6.6
+  firebase_core:
+  firebase_messaging:
+  firebase_auth:
 
 dev_dependencies:
   flutter_test:

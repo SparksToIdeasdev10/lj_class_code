@@ -6,7 +6,6 @@ import 'package:lj/class_c/login/login_model.dart';
 class ApiServices{
 
   Future<login> Login(String email,String password) async{
-
     try {
       final respo = await http.post(
           Uri.parse("https://www.anniecabs.com/LJ/index.php/api/login"),
@@ -15,8 +14,6 @@ class ApiServices{
             "Password":password,
           }
       );
-      print(respo);
-
       if (respo.statusCode == 200 || respo.statusCode == 201) {
         final jsonData = jsonDecode(respo.body);
         final user_value = login.fromJson(jsonData);
