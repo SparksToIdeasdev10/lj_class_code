@@ -1,9 +1,13 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
+import 'package:lj1/class_e/tree_plant/tree_model.dart';
 import 'package:lj1/class_e/login/login_model.dart';
 
 class apiServices{
+
+  Dio dio = Dio();
 
   Future<login> Login(String email,String password) async{
     try{
@@ -24,6 +28,22 @@ class apiServices{
     }catch(e){
       print("Error $e");
       throw Exception("Error!!!!");
+    }
+  }
+
+  Future<tree> Tree()async{
+    try{
+      final respo = await dio.get("https://www.anniecabs.com/LJ/index.php/api/get_tree_plant");
+
+      if(respo.statusCode == 200){
+        final value = tree.fromJson(respo.data);
+        return value;
+      }else{
+        throw Exception("Error!!!");
+      }
+    }catch(e){
+      print(e);
+      throw Exception("Error!!!");
     }
   }
 

@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lj1/class_a/firebase/login_screen.dart';
-import 'package:lj1/class_a/tree_plant/tree_screen.dart';
+import 'package:lj1/class_e/tree_plant/tree_screen.dart';
 import 'package:lj1/class_c/apply_loan/apply_loan_screen.dart';
 import 'package:lj1/class_d/news/news_screen.dart';
 import 'package:lj1/class_e/bottom_example.dart';
@@ -11,11 +11,11 @@ import 'package:lj1/class_e/gridview_example.dart';
 import 'package:lj1/class_e/tab_bar_example.dart';
 import 'class_b/admin_dashboard.dart';
 import 'class_c/bottom_task.dart';
-import 'class_d/firebase/login/login_screen.dart';
+import 'class_c/firebase/login/login_screen.dart';
 import 'class_e/buttons.dart';
 import 'class_d/splash_screen.dart';
 import 'class_e/admin_screen.dart';
-import 'class_e/drawer_example.dart';
+import 'class_d/drawer_example.dart';
 // import 'class_e/login/login_screen.dart';
 import 'class_e/stack_example.dart';
 
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen()
+      home: TreeScreen()
     );
   }
 }
